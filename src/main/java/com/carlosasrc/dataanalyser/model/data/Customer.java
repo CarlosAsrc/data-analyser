@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 public class Customer extends RowData {
     private String cnpj;
     private String name;

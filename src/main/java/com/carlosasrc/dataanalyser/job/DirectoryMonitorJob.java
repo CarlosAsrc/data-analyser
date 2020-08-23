@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class DirectoryMonitorJob {
+
     private final DataAnalysisService dataAnalysisService;
 
     @Scheduled(cron = "${application.monitoring.cron-job}")
