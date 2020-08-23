@@ -1,5 +1,6 @@
-package com.carlosasrc.dataanalyser.model;
+package com.carlosasrc.dataanalyser.model.file;
 
+import com.carlosasrc.dataanalyser.model.data.RowData;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

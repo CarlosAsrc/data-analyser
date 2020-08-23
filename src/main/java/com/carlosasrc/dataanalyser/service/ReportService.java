@@ -1,6 +1,10 @@
 package com.carlosasrc.dataanalyser.service;
 
-import com.carlosasrc.dataanalyser.model.*;
+import com.carlosasrc.dataanalyser.model.data.Customer;
+import com.carlosasrc.dataanalyser.model.data.RowData;
+import com.carlosasrc.dataanalyser.model.data.Sale;
+import com.carlosasrc.dataanalyser.model.data.Salesman;
+import com.carlosasrc.dataanalyser.model.file.DataReport;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,8 @@
 package com.carlosasrc.dataanalyser.parser;
 
-import com.carlosasrc.dataanalyser.model.Item;
-import com.carlosasrc.dataanalyser.model.RowData;
-import com.carlosasrc.dataanalyser.model.Sale;
+import com.carlosasrc.dataanalyser.model.data.Item;
+import com.carlosasrc.dataanalyser.model.data.RowData;
+import com.carlosasrc.dataanalyser.model.data.Sale;
 import com.carlosasrc.dataanalyser.properties.ParsingProperties;
 import org.springframework.stereotype.Component;
 

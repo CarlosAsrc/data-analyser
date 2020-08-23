@@ -1,8 +1,8 @@
 package com.carlosasrc.dataanalyser.service;
 
 import com.carlosasrc.dataanalyser.io.FileManager;
-import com.carlosasrc.dataanalyser.model.DataReport;
-import com.carlosasrc.dataanalyser.model.RowData;
+import com.carlosasrc.dataanalyser.model.file.DataReport;
+import com.carlosasrc.dataanalyser.model.data.RowData;
 import com.carlosasrc.dataanalyser.parser.FileParser;
 import com.carlosasrc.dataanalyser.properties.IOProperties;
 import lombok.AllArgsConstructor;

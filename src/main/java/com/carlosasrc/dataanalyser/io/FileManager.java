@@ -1,6 +1,6 @@
 package com.carlosasrc.dataanalyser.io;
 
-import com.carlosasrc.dataanalyser.model.DataReport;
+import com.carlosasrc.dataanalyser.model.file.DataReport;
 import com.carlosasrc.dataanalyser.properties.IOProperties;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

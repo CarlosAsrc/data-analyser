@@ -1,13 +1,15 @@
-package com.carlosasrc.dataanalyser.model;
+package com.carlosasrc.dataanalyser.model.data;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class Sale extends RowData {
     private Long id;
     private List<Item> items;
