@@ -37,8 +37,10 @@ public class FileProcessorService {
                 .map(fileManager::getFileContent)
                 .map(fileParser::parse)
                 .flatMap(List::stream)
+                .distinct()
                 .collect(Collectors.toList());
         DataReport dataReport = reportService.generateReport(rowData);
         fileManager.saveReport(dataReport, ioProperties.getOutputDirectory(), ioProperties.getSummarizedReportFileName());
     }
+
 }

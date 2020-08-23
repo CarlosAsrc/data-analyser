@@ -15,7 +15,7 @@ public class Sale extends RowData {
 
     public BigDecimal getSalePrice() {
         return items.stream()
-                .map(Item::getPrice)
+                .map(item -> item.getPrice().multiply(new BigDecimal(item.getQuantity())))
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
     }

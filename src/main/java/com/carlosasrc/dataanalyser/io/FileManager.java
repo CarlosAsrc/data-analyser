@@ -43,11 +43,8 @@ public class FileManager {
 
     private void writeReport(DataReport report, Path filePath) {
         try (BufferedWriter writer = Files.newBufferedWriter(filePath)) {
-            if (filePath.toFile().exists()) {
-                log.info("Report from {} file already exists on {} and will be overwritten", filePath.getFileName(), filePath);
-            }
             writer.write(report.toString());
-            log.info("Report from {} file saved in {}", filePath.getFileName(), ioProperties.getIndividualReportsDirectory());
+            log.info("Report from {} file saved in {}", filePath.getFileName(), filePath);
         } catch (IOException e) {
             log.error("Error writing report from {}} file", filePath.getFileName(), e);
             throw new RuntimeException(e.getMessage());

@@ -69,8 +69,4 @@ public class ReportService {
                 .map(rowData -> (Salesman) rowData)
                 .collect(Collectors.toList());
     }
-
-    public void generateSummarizedReport() {
-
-    }
 }
