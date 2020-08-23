@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: data-analyser
+
+application:
+  monitoring:
+    cron-job: 0/3 * * * * *
+  data:
+    manipulation:
+      parsing:
+        splitter:
+          row-data-splitter: 'ç'
+          item-splitter: '-'
+          item-list-splitter: ','
+        index:
+          salesman:
+            cpf: 1
+            name: 2
+            salary: 3
+          customer:
+            cnpj: 1
+            name: 2
+            business-area: 3
+          sale:
+            id: 1
+            item: 2
+            name-salesman: 3
+          item:
+            id: 0
+            quantity: 1
+            price: 2
+        row-type-id:
+          salesman: '001'
+          customer: '002'
+          sale: '003'
+        regex:
+          salesman: '^([0-9]{3})ç([0-9]{10,15})ç([a-zA-Zç ]+)ç([0-9.,]+)$'
+          customer: '^([0-9]{3})ç([0-9]{12,16})ç([a-zA-Z\s]+)ç(.*)$'
+          sale: '^([0-9]{3})ç([0-9]+)ç([^ç]+)ç([a-zA-Zç ]+)$'
+          brackets: '[\[\]]'
+    io:
+      extension:
+        input-file-extension: .dat
+        output-file-extension: .done.dat
+      directory:
+        input: ${user.home}/data/in
+        output: ${user.home}/data/out
+        individual-report: ${application.data.io.directory.output}/individual-reports
+        processed: ${user.home}/data/processed
+      file-name:
+        summary: summarized-report
