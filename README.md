@@ -40,6 +40,7 @@ The execution flow for this solution happens as follows:
 - Immediately begins reading and extracting the contents of the file.
 - An individual report for the file, similar to the summary report with all files, is generated and saved in `%HOMEPATH%/data/out/individual-reports`
 - The file is moved to the processed folder, located in `%HOMEPATH%/data/processed`
+- If an error occurs in validating or processing the input file, it is moved to `%HOMEPATH%/data/error`
 - The contents of all files already processed are read and loaded to recalculate and generate the summary report containing the output information for all the combined data.
 
 To meet the challenge so that the output data has its maximum utility, a strategy was created so that in addition to the
