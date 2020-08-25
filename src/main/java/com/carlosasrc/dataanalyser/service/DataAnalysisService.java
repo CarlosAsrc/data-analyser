@@ -32,10 +32,15 @@ public class DataAnalysisService {
                 return Boolean.FALSE;
 
             files.forEach(file -> {
-                log.info("Starting process {} file", file.getName());
-                fileProcessorService.processFile(file);
-                fileManager.moveToProcessed(file);
-                log.info("Finishing process {} file", file.getName());
+                try {
+                    log.info("Starting process {} file", file.getName());
+                    fileProcessorService.processFile(file);
+                    fileManager.moveFile(file, ioProperties.getInputDirectory(), ioProperties.getProcessedDirectory());
+                    log.info("Finishing process {} file", file.getName());
+                } catch (Exception e) {
+                    log.error("Error on precess file {}. {}", file.getName(), e.getMessage());
+                    fileManager.moveFile(file, ioProperties.getInputDirectory(), ioProperties.getErrorDirectory());
+                }
             });
             return Boolean.TRUE;
         } catch (Exception e) {
@@ -46,7 +51,7 @@ public class DataAnalysisService {
 
     public void generateSummarizedReport() {
         try {
-            log.info("Generating Summarized Report considering all input files");
+            log.info("Regenerating Summarized Report considering all input files");
             List<File> filesProcessed = fileManager.getValidFilesFromDirectory(ioProperties.getProcessedDirectory());
             fileProcessorService.summarizeProcessedFiles(filesProcessed);
             log.info("Summarized Report generation has been completed");

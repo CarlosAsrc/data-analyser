@@ -39,7 +39,7 @@ public class DataAnalysisServiceTest {
 
         Assert.assertFalse(hadNewFilesAvailable);
         verify(fileProcessorService, never()).processFile(any(File.class));
-        verify(fileManager, never()).moveToProcessed(any(File.class));
+        verify(fileManager, never()).moveFile(any(File.class), any(), any());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class DataAnalysisServiceTest {
 
         Assert.assertTrue(hadNewFilesAvailable);
         verify(fileProcessorService).processFile(any(File.class));
-        verify(fileManager).moveToProcessed(any(File.class));
+        verify(fileManager).moveFile(any(File.class), any(), any());
     }
 
     @Test
@@ -61,7 +61,7 @@ public class DataAnalysisServiceTest {
 
         Assert.assertFalse(hadNewFilesAvailable);
         verify(fileProcessorService, never()).processFile(any(File.class));
-        verify(fileManager, never()).moveToProcessed(any(File.class));
+        verify(fileManager, never()).moveFile(any(File.class), any(), any());
     }
 
     @Test

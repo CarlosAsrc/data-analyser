@@ -1,5 +1,6 @@
 package com.carlosasrc.dataanalyser.parser;
 
+import com.carlosasrc.dataanalyser.exception.InvalidDATFormatException;
 import com.carlosasrc.dataanalyser.model.data.RowData;
 import com.carlosasrc.dataanalyser.properties.ParsingProperties;
 import com.carlosasrc.dataanalyser.stub.CustomerStub;
@@ -17,6 +18,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.List;
 import java.util.Map;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
@@ -47,11 +49,26 @@ public class FileParserTest {
         when(customerParser.parseLine(anyString())).thenReturn(CustomerStub.build().get(0));
         when(salesmanParser.parseLine(anyString())).thenReturn(SalesmanStub.build().get(0));
         when(saleParser.parseLine(anyString())).thenReturn(SaleStub.build().get(0));
+        when(customerParser.validateLine(anyString())).thenReturn(Boolean.TRUE);
+        when(salesmanParser.validateLine(anyString())).thenReturn(Boolean.TRUE);
+        when(saleParser.validateLine(anyString())).thenReturn(Boolean.TRUE);
 
         List<RowData> expected = FileContentStub.getRowData().subList(0, 3);
         List<RowData> rowData = fileParser.parse(FileContentStub.getContent());
 
         Assert.assertEquals(expected, rowData);
+    }
+
+
+    @Test(expected = InvalidDATFormatException.class)
+    public void shouldThrowsInvalidDATFormatException() {
+        when(customerParser.parseLine(anyString())).thenReturn(CustomerStub.build().get(0));
+        when(salesmanParser.parseLine(anyString())).thenReturn(SalesmanStub.build().get(0));
+        when(customerParser.validateLine(anyString())).thenReturn(Boolean.TRUE);
+        when(salesmanParser.validateLine(anyString())).thenReturn(Boolean.TRUE);
+        when(saleParser.validateLine(anyString())).thenReturn(Boolean.FALSE);
+
+        fileParser.parse(FileContentStub.getContent());
     }
     
 }

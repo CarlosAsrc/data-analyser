@@ -20,4 +20,9 @@ public class CustomerParser extends RowDataParser {
         String businessArea = lineData[parsingProperties.getCustomerBusinessAreaIndex()];
         return new Customer(cpnj, name, businessArea);
     }
+
+    @Override
+    public Boolean validateLine(String line) {
+        return line.matches(parsingProperties.getCustomerRegex());
+    }
 }

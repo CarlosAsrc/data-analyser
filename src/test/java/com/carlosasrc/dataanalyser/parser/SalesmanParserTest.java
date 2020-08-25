@@ -27,6 +27,7 @@ public class SalesmanParserTest {
         when(parsingProperties.getSalesmanCpfIndex()).thenReturn(1);
         when(parsingProperties.getSalesmanNameIndex()).thenReturn(2);
         when(parsingProperties.getSalesmanSalaryIndex()).thenReturn(3);
+        when(parsingProperties.getSalesmanRegex()).thenReturn("^([0-9]{3})ç([0-9]{10,15})ç([a-zA-Zç ]+)ç([0-9.,]+)$");
     }
 
     @Test
@@ -35,6 +36,18 @@ public class SalesmanParserTest {
         Salesman salesman = (Salesman) salesmanParser.parseLine("001ç1234567891234çPedroç50000");
 
         Assert.assertEquals(expected, salesman);
+    }
+
+    @Test
+    public void shouldReturnValid() {
+        Boolean valid = salesmanParser.validateLine("001ç1234567891234çPedroç50000");
+        Assert.assertTrue(valid);
+    }
+
+    @Test
+    public void shouldReturnInvalid() {
+        Boolean valid = salesmanParser.validateLine("001ç1234567891234çPedroç5000as0");
+        Assert.assertFalse(valid);
     }
 
 }

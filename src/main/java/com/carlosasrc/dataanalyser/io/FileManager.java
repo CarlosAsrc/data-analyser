@@ -60,14 +60,14 @@ public class FileManager {
         }
     }
 
-    public void moveToProcessed(File file) {
+    public void moveFile(File file, String originFile, String destinyFile) {
         try {
             Files.move(
-                    buildPath(ioProperties.getInputDirectory(), file.getName()),
-                    buildPath(ioProperties.getProcessedDirectory(), file.getName()),
+                    buildPath(originFile, file.getName()),
+                    buildPath(destinyFile, file.getName()),
                     StandardCopyOption.REPLACE_EXISTING
             );
-            log.info("File {} moved to {}/{}", file.getName(), ioProperties.getProcessedDirectory(),file.getName());
+            log.info("File {} moved to {}/{}", file.getName(), destinyFile, file.getName());
         } catch (IOException e) {
             log.error("Error when moving file {} from the input directory to the processed file directory.", file.getName(), e);
         }
@@ -89,6 +89,7 @@ public class FileManager {
                 ioProperties.getInputDirectory(),
                 ioProperties.getOutputDirectory(),
                 ioProperties.getProcessedDirectory(),
+                ioProperties.getErrorDirectory(),
                 ioProperties.getIndividualReportsDirectory())
                 .map(File::new)
                 .forEach(this::createDirectory);

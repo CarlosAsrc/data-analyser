@@ -11,4 +11,5 @@ public abstract class RowDataParser {
     protected final ParsingProperties parsingProperties;
 
     public abstract RowData parseLine(String line);
+    public abstract Boolean validateLine(String line);
 }

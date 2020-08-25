@@ -39,6 +39,7 @@ public class FileManagerTest {
     private Path inDir;
     private Path outDir;
     private Path processedDir;
+    private Path errorDir;
     private Path individualReportDir;
 
 
@@ -48,6 +49,7 @@ public class FileManagerTest {
         inDir = Files.createTempDirectory( tmpTestDir, "IN-");
         outDir = Files.createTempDirectory( tmpTestDir, "OUT-");
         processedDir = Files.createTempDirectory( tmpTestDir, "PROCESSED-");
+        errorDir = Files.createTempDirectory( tmpTestDir, "ERROR-");
         individualReportDir = Files.createTempDirectory( tmpTestDir, "individual-reports-");
     }
 
@@ -74,11 +76,13 @@ public class FileManagerTest {
         String inDir = tmpTestDir.toString()+"/IN";
         String outDir = tmpTestDir.toString()+"/OUT";
         String processedDir = tmpTestDir.toString()+"/PROCESSED";
+        String errorDir = tmpTestDir.toString()+"/ERROR";
         String individualReportsDir = tmpTestDir.toString()+"/individual-reports";
 
         when(ioProperties.getInputDirectory()).thenReturn(inDir);
         when(ioProperties.getOutputDirectory()).thenReturn(outDir);
         when(ioProperties.getProcessedDirectory()).thenReturn(processedDir);
+        when(ioProperties.getErrorDirectory()).thenReturn(errorDir);
         when(ioProperties.getIndividualReportsDirectory()).thenReturn(individualReportsDir);
 
         fileManager.createDirectories();
@@ -91,15 +95,21 @@ public class FileManagerTest {
 
 
     @Test
-    public void shouldMoveFileToprocessed() throws IOException {
-        when(ioProperties.getInputDirectory()).thenReturn(inDir.toString());
-        when(ioProperties.getProcessedDirectory()).thenReturn(processedDir.toString());
-
+    public void shouldMoveFileToProcessed() throws IOException {
         createTestFile(Paths.get(inDir.toString()).toFile());
 
-        fileManager.moveToProcessed(tmpFile);
+        fileManager.moveFile(tmpFile, inDir.toString(), processedDir.toString());
 
         Assert.assertTrue(Files.exists(Paths.get(processedDir+"/"+ tmpFile.getName())));
+    }
+
+    @Test
+    public void shouldMoveFileToError() throws IOException {
+        createTestFile(Paths.get(inDir.toString()).toFile());
+
+        fileManager.moveFile(tmpFile, inDir.toString(), errorDir.toString());
+
+        Assert.assertTrue(Files.exists(Paths.get(errorDir+"/"+ tmpFile.getName())));
     }
 
     @Test

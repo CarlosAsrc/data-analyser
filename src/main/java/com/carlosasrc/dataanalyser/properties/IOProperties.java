@@ -26,6 +26,9 @@ public class IOProperties {
     @Value("${application.data.io.directory.processed}")
     private String processedDirectory;
 
+    @Value("${application.data.io.directory.error}")
+    private String errorDirectory;
+
     @Value("${application.data.io.file-name.summary}")
     private String summarizedReportFileName;
 

@@ -33,6 +33,7 @@ public class SaleParserTest {
         when(parsingProperties.getItemPriceIndex()).thenReturn(2);
         when(parsingProperties.getItemListSplitter()).thenReturn(",");
         when(parsingProperties.getItemSplitter()).thenReturn("-");
+        when(parsingProperties.getSaleRegex()).thenReturn("^([0-9]{3})ç([0-9]+)ç([^ç]+)ç([a-zA-Zç ]+)$");
     }
 
     @Test
@@ -41,6 +42,18 @@ public class SaleParserTest {
         Sale Sale = (Sale) saleParser.parseLine("003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro");
 
         Assert.assertEquals(expected, Sale);
+    }
+
+    @Test
+    public void shouldReturnValid() {
+        Boolean valid = saleParser.validateLine("003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro");
+        Assert.assertTrue(valid);
+    }
+
+    @Test
+    public void shouldReturnInvalid() {
+        Boolean valid = saleParser.validateLine("003ç10sç[1-10-100,2-30-2.50,3-40-3.10]çPedro");
+        Assert.assertFalse(valid);
     }
 
 }

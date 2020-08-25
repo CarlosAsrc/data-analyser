@@ -22,4 +22,9 @@ public class SalesmanParser extends RowDataParser {
         BigDecimal salary = new BigDecimal(lineData[parsingProperties.getSalesmanSalaryIndex()]);
         return new Salesman(cpf, name, salary);
     }
+
+    @Override
+    public Boolean validateLine(String line) {
+        return line.matches(parsingProperties.getSalesmanRegex());
+    }
 }

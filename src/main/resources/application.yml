@@ -36,7 +36,7 @@ application:
         regex:
           salesman: '^([0-9]{3})ç([0-9]{10,15})ç([a-zA-Zç ]+)ç([0-9.,]+)$'
           customer: '^([0-9]{3})ç([0-9]{12,16})ç([a-zA-Z\s]+)ç(.*)$'
-          sale: '^([0-9]{3})ç([0-9]+)ç([^ç]+)ç([a-zA-Zç ]+)$'
+            sale: '^([0-9]{3})ç([0-9]+)ç([^ç]+)ç([a-zA-Zç ]+)$'
           brackets: '[\[\]]'
     io:
       extension:
@@ -47,5 +47,6 @@ application:
         output: ${user.home}/data/out
         individual-report: ${application.data.io.directory.output}/individual-reports
         processed: ${user.home}/data/processed
+        error: ${user.home}/data/error
       file-name:
         summary: summarized-report

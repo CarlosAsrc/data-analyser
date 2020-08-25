@@ -1,5 +1,6 @@
 package com.carlosasrc.dataanalyser.parser;
 
+import com.carlosasrc.dataanalyser.exception.InvalidDATFormatException;
 import com.carlosasrc.dataanalyser.model.data.RowData;
 import com.carlosasrc.dataanalyser.properties.ParsingProperties;
 import lombok.Getter;
@@ -35,6 +36,10 @@ public class FileParser {
     }
 
     private RowData parseRowData(String s) {
-        return layoutParser.get(s.substring(0, 3)).parseLine(s);
+        RowDataParser parser = layoutParser.get(s.substring(0, 3));
+        if(!parser.validateLine(s)) {
+            throw new InvalidDATFormatException(String.format("Invalid format line: %s", s));
+        }
+        return  parser.parseLine(s);
     }
 }

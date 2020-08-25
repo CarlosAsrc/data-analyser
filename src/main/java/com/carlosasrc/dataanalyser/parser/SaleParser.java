@@ -27,6 +27,11 @@ public class SaleParser extends RowDataParser {
         return new Sale(id, items, salesmanName);
     }
 
+    @Override
+    public Boolean validateLine(String line) {
+        return line.matches(parsingProperties.getSaleRegex());
+    }
+
     private List<Item> buildItems(String lineItems) {
 
         List<String> itemsData = Arrays
