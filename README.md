@@ -5,7 +5,7 @@ executed every time a file is made available in the input directory.
 
 Below is a diagram of the overall system architecture:
 
-![Data Analyser Architecture](./data-analyser-architecture.png?raw=true "Data Analyser Architecture")
+![Data Analyser Architecture](data-analyser-arch.png?raw=true "Data Analyser Architecture")
 
 ### Flat input file layout
 There are 3 kinds of data inside those files. For each kind of data there is a different layout.
