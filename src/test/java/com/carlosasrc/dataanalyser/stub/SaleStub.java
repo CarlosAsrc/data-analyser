@@ -10,15 +10,19 @@ import java.util.Collections;
 import java.util.List;
 
 public class SaleStub {
-    public static Sale build() {
-        return new Sale(10L, buildItems(), "Pedro");
+    public static List<Sale> build() {
+        return Arrays.asList(new Sale(10L, buildItems().subList(0, 3), "Pedro"),
+                             new Sale(8L, buildItems().subList(3, 6), "Paulo"));
     }
 
     private static List<Item> buildItems() {
         return Arrays.asList(
                 buildItem(1L, 10L, new BigDecimal("100")),
                 buildItem(2L, 30L, new BigDecimal("2.50")),
-                buildItem(3L, 40L, new BigDecimal("3.10"))
+                buildItem(3L, 40L, new BigDecimal("3.10")),
+                buildItem(1L, 34L, new BigDecimal("10")),
+                buildItem(2L, 33L, new BigDecimal("1.50")),
+                buildItem(3L, 40L, new BigDecimal("0.10"))
         );
     }
 

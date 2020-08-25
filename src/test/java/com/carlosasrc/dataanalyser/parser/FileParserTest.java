@@ -44,11 +44,11 @@ public class FileParserTest {
 
     @Test
     public void shouldParseRowData() {
-        when(customerParser.parseLine(anyString())).thenReturn(CustomerStub.build());
-        when(salesmanParser.parseLine(anyString())).thenReturn(SalesmanStub.build());
-        when(saleParser.parseLine(anyString())).thenReturn(SaleStub.build());
+        when(customerParser.parseLine(anyString())).thenReturn(CustomerStub.build().get(0));
+        when(salesmanParser.parseLine(anyString())).thenReturn(SalesmanStub.build().get(0));
+        when(saleParser.parseLine(anyString())).thenReturn(SaleStub.build().get(0));
 
-        List<RowData> expected = FileContentStub.getRowData();
+        List<RowData> expected = FileContentStub.getRowData().subList(0, 3);
         List<RowData> rowData = fileParser.parse(FileContentStub.getContent());
 
         Assert.assertEquals(expected, rowData);

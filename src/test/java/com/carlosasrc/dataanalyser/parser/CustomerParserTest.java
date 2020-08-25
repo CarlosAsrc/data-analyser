@@ -33,7 +33,7 @@ public class CustomerParserTest {
 
     @Test
     public void shouldBuildSalesmanDataRow() {
-        Customer expected = CustomerStub.build();
+        Customer expected = CustomerStub.build().get(0);
         Customer customer = (Customer) customerParser.parseLine("002ç2345675434544345çJose da SilvaçRural");
 
         Assert.assertEquals(expected, customer);

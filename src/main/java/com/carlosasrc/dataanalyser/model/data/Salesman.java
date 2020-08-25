@@ -1,13 +1,13 @@
 package com.carlosasrc.dataanalyser.model.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Data
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class Salesman extends RowData {
     private String cpf;

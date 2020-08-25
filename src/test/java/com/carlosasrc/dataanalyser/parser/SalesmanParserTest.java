@@ -31,7 +31,7 @@ public class SalesmanParserTest {
 
     @Test
     public void shouldBuildSalesmanDataRow() {
-        Salesman expected = SalesmanStub.build();
+        Salesman expected = SalesmanStub.build().get(0);
         Salesman salesman = (Salesman) salesmanParser.parseLine("001ç1234567891234çPedroç50000");
 
         Assert.assertEquals(expected, salesman);

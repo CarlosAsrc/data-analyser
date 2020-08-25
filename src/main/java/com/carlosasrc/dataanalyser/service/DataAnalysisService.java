@@ -39,7 +39,7 @@ public class DataAnalysisService {
             });
             return Boolean.TRUE;
         } catch (Exception e) {
-            log.error("Error processing input files: ",e);
+            log.error("Error processing input files: ", e);
             return Boolean.FALSE;
         }
     }
@@ -51,7 +51,7 @@ public class DataAnalysisService {
             fileProcessorService.summarizeProcessedFiles(filesProcessed);
             log.info("Summarized Report generation has been completed");
         } catch (Exception e) {
-            log.error("Error generating Summarized Report: ",e);
+            log.error("Error generating Summarized Report: ", e);
         }
     }
 }

@@ -43,7 +43,7 @@ public class FileManager {
 
     private void writeReport(DataReport report, Path filePath) {
         try (BufferedWriter writer = Files.newBufferedWriter(filePath)) {
-            writer.write(report.toString());
+            writer.write(report.getContent());
             log.info("Report from {} file saved in {}", filePath.getFileName(), filePath);
         } catch (IOException e) {
             log.error("Error writing report from {}} file", filePath.getFileName(), e);
@@ -70,7 +70,6 @@ public class FileManager {
             log.info("File {} moved to {}/{}", file.getName(), ioProperties.getProcessedDirectory(),file.getName());
         } catch (IOException e) {
             log.error("Error when moving file {} from the input directory to the processed file directory.", file.getName(), e);
-            e.printStackTrace();
         }
     }
 

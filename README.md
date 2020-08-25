@@ -30,8 +30,8 @@ The output file must be found in `%HOMEPATH%/data/out`
 
 ## Implementation
 ### Technology
-This project was developed under the SpringBoot framework, using Gradle as dependency and build management. A container 
-for the application was also configured through Docker and Docker Compose.
+This project was developed under the SpringBoot framework, using Gradle as dependency and build management. 
+To reduce boiler plate code, the lombok library was used.
 
 ### Solution
 The execution flow for this solution happens as follows:

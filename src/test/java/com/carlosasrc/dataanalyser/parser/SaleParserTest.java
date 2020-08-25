@@ -37,7 +37,7 @@ public class SaleParserTest {
 
     @Test
     public void shouldBuildSalesmanDataRow() {
-        Sale expected = SaleStub.build();
+        Sale expected = SaleStub.build().get(0);
         Sale Sale = (Sale) saleParser.parseLine("003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çPedro");
 
         Assert.assertEquals(expected, Sale);

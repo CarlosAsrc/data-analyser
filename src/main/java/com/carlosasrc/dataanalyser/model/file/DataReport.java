@@ -17,10 +17,9 @@ public class DataReport {
     private Sale mostExpensiveSale;
     private Salesman worstSeller;
 
-    @Override
-    public String toString() {
+    public String getContent() {
         final String LINE_SEPARATOR = System.getProperty("line.separator");
-        return "Amount of salesmen: "
+        return  "Amount of salesmen: "
                 .concat(amountSalesmen + LINE_SEPARATOR)
                 .concat("Amount of customers: ")
                 .concat(amountCustomers + LINE_SEPARATOR)

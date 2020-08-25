@@ -5,6 +5,7 @@ import com.carlosasrc.dataanalyser.model.file.DataReport;
 import com.carlosasrc.dataanalyser.model.data.RowData;
 import com.carlosasrc.dataanalyser.parser.FileParser;
 import com.carlosasrc.dataanalyser.properties.IOProperties;
+import com.carlosasrc.dataanalyser.service.report.ReportService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
