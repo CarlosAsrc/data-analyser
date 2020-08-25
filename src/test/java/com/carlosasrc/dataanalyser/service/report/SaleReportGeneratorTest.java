@@ -2,6 +2,7 @@ package com.carlosasrc.dataanalyser.service.report;
 
 import com.carlosasrc.dataanalyser.model.data.RowData;
 import com.carlosasrc.dataanalyser.model.data.Sale;
+import com.carlosasrc.dataanalyser.service.report.generator.SaleReportGenerator;
 import com.carlosasrc.dataanalyser.stub.FileContentStub;
 import com.carlosasrc.dataanalyser.stub.SaleStub;
 import org.junit.Assert;
@@ -14,16 +15,16 @@ import java.util.List;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class SaleReportServiceTest {
+public class SaleReportGeneratorTest {
 
     @InjectMocks
-    private SaleReportService saleReportService;
+    private SaleReportGenerator saleReportGenerator;
 
     @Test
     public void shouldReturnMostExpensiveSale() {
         List<RowData> rowData = FileContentStub.getRowData();
         Sale expected = SaleStub.build().get(0);
-        Sale mostExpensiveSale = saleReportService.getMostExpensiveSale(rowData);
+        Sale mostExpensiveSale = saleReportGenerator.getMostExpensiveSale(rowData);
 
         Assert.assertEquals(expected, mostExpensiveSale);
     }

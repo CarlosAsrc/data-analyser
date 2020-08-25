@@ -1,6 +1,7 @@
 package com.carlosasrc.dataanalyser.service.report;
 
 import com.carlosasrc.dataanalyser.model.data.RowData;
+import com.carlosasrc.dataanalyser.service.report.generator.CustomerReportGenerator;
 import com.carlosasrc.dataanalyser.stub.FileContentStub;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,16 +13,16 @@ import java.util.List;
 
 
 @RunWith(MockitoJUnitRunner.class)
-public class CustomerReportServiceTest {
+public class CustomerReportGeneratorTest {
 
     @InjectMocks
-    private CustomerReportService customerReportService;
+    private CustomerReportGenerator customerReportGenerator;
 
     @Test
     public void shouldReturnAmountOfCustomers() {
         List<RowData> rowData = FileContentStub.getRowData();
         Long expected = 2L;
-        Long amountCustomers = customerReportService.getAmountCustomers(rowData);
+        Long amountCustomers = customerReportGenerator.getAmountCustomers(rowData);
 
         Assert.assertEquals(expected, amountCustomers);
     }

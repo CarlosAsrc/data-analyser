@@ -1,4 +1,4 @@
-package com.carlosasrc.dataanalyser.service.report;
+package com.carlosasrc.dataanalyser.service.report.generator;
 
 import com.carlosasrc.dataanalyser.model.data.RowData;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package com.carlosasrc.dataanalyser.service.report;
+package com.carlosasrc.dataanalyser.service.report.generator;
 
 import com.carlosasrc.dataanalyser.model.data.RowData;
 import com.carlosasrc.dataanalyser.model.data.Sale;
@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Component
 @AllArgsConstructor
-public class SalesmanReportService extends ReportGenerator {
+public class SalesmanReportGenerator extends ReportGenerator {
 
     public Salesman getWorstSeller(List<RowData> data) {
         List<Sale> sales = (List<Sale>) getListByType(data, Sale.class);

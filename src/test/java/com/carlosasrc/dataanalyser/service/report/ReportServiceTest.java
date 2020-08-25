@@ -2,10 +2,9 @@ package com.carlosasrc.dataanalyser.service.report;
 
 import com.carlosasrc.dataanalyser.model.data.RowData;
 import com.carlosasrc.dataanalyser.model.file.DataReport;
-import com.carlosasrc.dataanalyser.service.report.CustomerReportService;
-import com.carlosasrc.dataanalyser.service.report.ReportService;
-import com.carlosasrc.dataanalyser.service.report.SaleReportService;
-import com.carlosasrc.dataanalyser.service.report.SalesmanReportService;
+import com.carlosasrc.dataanalyser.service.report.generator.CustomerReportGenerator;
+import com.carlosasrc.dataanalyser.service.report.generator.SaleReportGenerator;
+import com.carlosasrc.dataanalyser.service.report.generator.SalesmanReportGenerator;
 import com.carlosasrc.dataanalyser.stub.DataReportStub;
 import com.carlosasrc.dataanalyser.stub.FileContentStub;
 import com.carlosasrc.dataanalyser.stub.SaleStub;
@@ -30,18 +29,18 @@ public class ReportServiceTest {
     private ReportService reportService;
 
     @Mock
-    private SalesmanReportService salesmanReportService;
+    private SalesmanReportGenerator salesmanReportGenerator;
     @Mock
-    private CustomerReportService customerReportService;
+    private CustomerReportGenerator customerReportGenerator;
     @Mock
-    private SaleReportService saleReportService;
+    private SaleReportGenerator saleReportGenerator;
 
     @Test
     public void shouldGenerateReport() {
-        when(saleReportService.getMostExpensiveSale(anyList())).thenReturn(SaleStub.build().get(0));
-        when(customerReportService.getAmountCustomers(anyList())).thenReturn(2L);
-        when(salesmanReportService.getAmountSalesmen(anyList())).thenReturn(2L);
-        when(salesmanReportService.getWorstSeller(anyList())).thenReturn(SalesmanStub.build().get(1));
+        when(saleReportGenerator.getMostExpensiveSale(anyList())).thenReturn(SaleStub.build().get(0));
+        when(customerReportGenerator.getAmountCustomers(anyList())).thenReturn(2L);
+        when(salesmanReportGenerator.getAmountSalesmen(anyList())).thenReturn(2L);
+        when(salesmanReportGenerator.getWorstSeller(anyList())).thenReturn(SalesmanStub.build().get(1));
 
         DataReport expected = DataReportStub.build();
         List<RowData> rowData = FileContentStub.getRowData();
