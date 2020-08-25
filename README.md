@@ -28,10 +28,15 @@ The input file must be found in `%HOMEPATH%/data/in`
 
 The output file must be found in `%HOMEPATH%/data/out`
 
+## Running
+To run the application, follow these steps:
+ - Generate a jar file with gradle: `data-analyser:~$ ./gradlew clean build` 
+ - Run the application `java -jar build/libs/dataanalyser-0.0.1-SNAPSHOT.jar`
+
 ## Implementation
 ### Technology
 This project was developed under the SpringBoot framework, using Gradle as dependency and build management. 
-To reduce boiler plate code, the lombok library was used.
+To reduce boiler plate code, the lombok library was used. For unit tests was used the Mockito framework.
 
 ### Solution
 The execution flow for this solution happens as follows:
@@ -50,8 +55,10 @@ files.
 To this end, a subdirectory was created within the standard output directory, called individual-reports, containing the 
 individual report for each input file, with a name prefixed by it, and postfixed by the output extension done.out
 
-
-
+### Tests
+Unit tests cover about 75% of the application, with an emphasis on the main functionalities such as reading, writing and
+file validation, and statistical analysis of the data.
+To run the Unit Tests: `data-analyser:~$ ./gradlew clean test` 
 
 ### An alternative solution
 To meet the need proposed by the challenge, it is necessary to consider a very important factor mentioned: for each new
