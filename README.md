@@ -1,3 +1,16 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=alert_status)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=security_rating)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=coverage)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=bugs)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=code_smells)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=CarlosAsrc_data-analyser&metric=ncloc)](https://sonarcloud.io/dashboard?id=CarlosAsrc_data-analyser)
+
 # Data Analyser
 
 This project is a data analysis system that imports many flat files, reads, analyzes the data and generates a report. The analysis is
@@ -56,7 +69,7 @@ To this end, a subdirectory was created within the standard output directory, ca
 individual report for each input file, with a name prefixed by it, and postfixed by the output extension done.out
 
 ### Tests
-Unit tests cover about 75% of the application, with an emphasis on the main functionalities such as reading, writing and
+Unit tests cover about 88% of the application, with an emphasis on the main functionalities such as reading, writing and
 file validation, and statistical analysis of the data.
 To run the Unit Tests: `data-analyser:~$ ./gradlew clean test` 
 

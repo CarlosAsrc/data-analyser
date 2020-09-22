@@ -2,6 +2,8 @@ plugins {
     id 'org.springframework.boot' version '2.3.3.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
+    id "org.sonarqube" version "3.0"
+    id 'jacoco'
 }
 
 group = 'com.carlosasrc'
@@ -27,4 +29,26 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+}
+
+sonarqube {
+    properties {
+        property "sonar.projectKey", "CarlosAsrc_data-analyser"
+        property "sonar.organization", "carlos-asrc"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.tests", "src/test/java"
+        property 'sonar.jacoco.reportPath', "${buildDir}/jacoco/test.exec"
+        property 'sonar.coverage.exclusions', ['**/properties/**', '**/exception/**', '**/job/**', '**/data/**', '**/file/**']
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+    dependsOn test
+}
+
+plugins.withType(JacocoPlugin) {
+    tasks["test"].finalizedBy 'jacocoTestReport'
 }
